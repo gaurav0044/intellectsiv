@@ -8,25 +8,29 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-let spendingAmount='5000';
+let anger={
+    angerMeter:"",
+    angerLevel:""
+};
 
 //post route for adding speinding limit
-app.post("/add-spending-limit", function(req,res) {
+app.post("/add-anger-limit", function(req,res) {
     //add the new spending from the post route
-    spendingAmount = req.body.spend;
+    anger.angerLevel = req.body.angerLevel;
+    anger.angerMeter = req.body.angerMeter;
     res.json({
         status:true,
-        message:"spending amount has been set successfully",
-        spending:spendingAmount
+        message:"anger value has been set sucessfully",
+        anger
     })
 });
 
-app.get("/get-spending-limit", function(req,res) {
+app.get("/get-anger-limit", function(req,res) {
     //add the new spending from the post route    
     res.json({
         status:true,
-        spending:spendingAmount,
-        message:"spending amount",
+        anger,
+        message:"anger value",
     })
 });
 
